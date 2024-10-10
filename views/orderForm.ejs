@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Megrendelés</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+
+<body>
+    <form method="post">
+        <h2>Válaszd ki a terméket</h2>
+
+        <div class="product-container">
+            <div class="product">
+                <label for="p1"><img src="img/kenyer.jpg" alt="Kenyér"></label>
+                <input type="radio" name="product" value="kenyer" id="p1" <%= formData?.product === 'kenyer' ? 'checked' : '' %>> Termék 1
+            </div>
+            <div class="product">
+                <label for="p2"><img src="img/zsemle.jpg" alt="Zsemle"></label>
+                <input type="radio" name="product" value="zsemle" id="p2" <%= formData?.product === 'zsemle' ? 'checked' : '' %>> Termék 2
+            </div>
+            <div class="product">
+                <label for="p3"><img src="img/kalacs.jpg" alt="Kalács"></label>
+                <input type="radio" name="product" value="kalacs" id="p3" <%= formData?.product === 'kalacs' ? 'checked' : '' %>> Termék 3
+            </div>
+        </div>
+
+        <label for="name">Név:</label>
+        <input type="text" id="name" name="name" value="<%= formData?.name || '' %>">
+        <% if (errors?.find(e => e.property === 'name')) { %>
+            <p style="color: red;"><%= errors.find(e => e.property === 'name').constraints[Object.keys(errors.find(e => e.property === 'name').constraints)[0]] %></p>
+        <% } %>
+
+        <h3>Számlázási cím</h3>
+        <label for="recipeCountry">Ország:</label>
+        <input type="text" id="recipeCountry" name="recipeCountry" value="<%= formData?.recipeCountry || '' %>">
+        <% if (errors?.find(e => e.property === 'recipeCountry')) { %>
+            <p style="color: red;"><%= errors.find(e => e.property === 'recipeCountry').constraints[Object.keys(errors.find(e => e.property === 'recipeCountry').constraints)[0]] %></p>
+        <% } %>
+
+        <label for="recipePostcode">Irányítószám:</label>
+        <input type="text" id="recipePostcode" name="recipePostcode" value="<%= formData?.recipePostcode || '' %>">
+        <% if (errors?.find(e => e.property === 'recipePostcode')) { %>
+            <p style="color: red;"><%= errors.find(e => e.property === 'recipePostcode').constraints[Object.keys(errors.find(e => e.property === 'recipePostcode').constraints)[0]] %></p>
+        <% } %>
+
+        <label for="recipeCity">Város:</label>
+        <input type="text" id="recipeCity" name="recipeCity" value="<%= formData?.recipeCity || '' %>">
+        <% if (errors?.find(e => e.property === 'recipeCity')) { %>
+            <p style="color: red;"><%= errors.find(e => e.property === 'recipeCity').constraints[Object.keys(errors.find(e => e.property === 'recipeCity').constraints)[0]] %></p>
+        <% } %>
+
+        <label for="recipeStreet">Utca:</label>
+        <input type="text" id="recipeStreet" name="recipeStreet" value="<%= formData?.recipeStreet || '' %>">
+        <% if (errors?.find(e => e.property === 'recipeStreet')) { %>
+            <p style="color: red;"><%= errors.find(e => e.property === 'recipeStreet').constraints[Object.keys(errors.find(e => e.property === 'recipeStreet').constraints)[0]] %></p>
+        <% } %>
+
+        <label for="recipeHouseNum">Házszám:</label>
+        <input type="number" id="recipeHouseNum" name="recipeHouseNum" value="<%= formData?.recipeHouseNum || '' %>">
+        <% if (errors?.find(e => e.property === 'recipeHouseNum')) { %>
+            <p style="color: red;"><%= errors.find(e => e.property === 'recipeHouseNum').constraints[Object.keys(errors.find(e => e.property === 'recipeHouseNum').constraints)[0]] %></p>
+        <% } %>
+
+        <h3>Szállítási cím</h3>
+        <label for="deliveryCountry">Ország:</label>
+        <input type="text" id="deliveryCountry" name="deliveryCountry" value="<%= formData?.deliveryCountry || '' %>">
+        <% if (errors?.find(e => e.property === 'deliveryCountry')) { %>
+            <p style="color: red;"><%= errors.find(e => e.property === 'deliveryCountry').constraints[Object.keys(errors.find(e => e.property === 'deliveryCountry').constraints)[0]] %></p>
+        <% } %>
+
+        <label for="deliveryPostcode">Irányítószám:</label>
+        <input type="text" id="deliveryPostcode" name="deliveryPostcode" value="<%= formData?.deliveryPostcode || '' %>">
+        <% if (errors?.find(e => e.property === 'deliveryPostcode')) { %>
+            <p style="color: red;"><%= errors.find(e => e.property === 'deliveryPostcode').constraints[Object.keys(errors.find(e => e.property === 'deliveryPostcode').constraints)[0]] %></p>
+        <% } %>
+
+        <label for="deliveryCity">Város:</label>
+        <input type="text" id="deliveryCity" name="deliveryCity" value="<%= formData?.deliveryCity || '' %>">
+        <% if (errors?.find(e => e.property === 'deliveryCity')) { %>
+            <p style="color: red;"><%= errors.find(e => e.property === 'deliveryCity').constraints[Object.keys(errors.find(e => e.property === 'deliveryCity').constraints)[0]] %></p>
+        <% } %>
+
+        <label for="deliveryStreet">Utca:</label>
+        <input type="text" id="deliveryStreet" name="deliveryStreet" value="<%= formData?.deliveryStreet || '' %>">
+        <% if (errors?.find(e => e.property === 'deliveryStreet')) { %>
+            <p style="color: red;"><%= errors.find(e => e.property === 'deliveryStreet').constraints[Object.keys(errors.find(e => e.property === 'deliveryStreet').constraints)[0]] %></p>
+        <% } %>
+
+        <label for="deliveryHouseNum">Házszám:</label>
+        <input type="number" id="deliveryHouseNum" name="deliveryHouseNum" value="<%= formData?.deliveryHouseNum || '' %>">
+        <% if (errors?.find(e => e.property === 'deliveryHouseNum')) { %>
+            <p style="color: red;"><%= errors.find(e => e.property === 'deliveryHouseNum').constraints[Object.keys(errors.find(e => e.property === 'deliveryHouseNum').constraints)[0]] %></p>
+        <% } %>
+
+        <h3>Kuponkód</h3>
+        <input type="text" name="code" placeholder="Kuponkód (ha van)" value="<%= formData?.code || '' %>">
+        <% if (errors?.find(e => e.property === 'code')) { %>
+            <p style="color: red;"><%= errors.find(e => e.property === 'code').constraints[Object.keys(errors.find(e => e.property === 'code').constraints)[0]] %></p>
+        <% } %>
+
+        <h3>Fizetési adatok</h3>
+        <label for="cardNum">Kártyaszám:</label>
+        <input type="text" id="cardNum" name="cardNum" placeholder="Kártyaszám">
+        <% if (errors?.find(e => e.property === 'cardNum')) { %>
+            <p style="color: red;"><%= errors.find(e => e.property === 'cardNum').constraints[Object.keys(errors.find(e => e.property === 'cardNum').constraints)[0]] %></p>
+        <% } %>
+
+        <label for="cardExp">Lejárat dátuma:</label>
+        <input type="text" id="cardExp" name="cardExp" placeholder="MM/YYYY formátum">
+        <% if (errors?.find(e => e.property === 'cardExp')) { %>
+            <p style="color: red;"><%= errors.find(e => e.property === 'cardExp').constraints[Object.keys(errors.find(e => e.property === 'cardExp').constraints)[0]] %></p>
+        <% } %>
+
+        <label for="cardSec">Biztonsági kód (CVV):</label>
+        <input type="text" id="cardSec" name="cardSec" placeholder="CVV">
+        <% if (errors?.find(e => e.property === 'cardSec')) { %>
+            <p style="color: red;"><%= errors.find(e => e.property === 'cardSec').constraints[Object.keys(errors.find(e => e.property === 'cardSec').constraints)[0]] %></p>
+        <% } %>
+
+        <input type="submit" value="Megrendelés">
+    </form>
+</body>
+
+</html>
